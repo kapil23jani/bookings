@@ -1,0 +1,23 @@
+
+<dir class="container">
+	<div class="row">
+		<div class="col-sm-4">	
+			<%= form_for ([@user,@profile]) do |form| %>
+				<%= form.label :name %>
+				<%= form.text_field :name, class: "form-control	" %><br>
+				<%= radio_button_tag(:gender, "1")	 %>
+				<%= label_tag(:gender_male,   "Male") %>
+				<%= radio_button_tag(:gender, "2") %>
+				<%= label_tag(:gender_female, "Female") %><br>
+				<%= form.label :address %>
+				<%= form.text_area :address, class: "form-control" %><br>
+				<%= form.label :experience %>
+				<%= form.text_field :experience, class: "form-control"%><br>
+				<%= form.label :Picture %>
+				<%= form.file_field :picture, class: "form-control" %><br>
+				<%= form.submit class: "btn btn-success" %>
+			<%end %>
+		</div>
+	</div>
+</dir>
+

@@ -1,0 +1,28 @@
+<br>
+
+<%= link_to "Add Theatre", new_theatre_path, class: "btn btn-primary" %><br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<% @theatres.each  do |theatre| %>
+			<br>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <%= theatre.name %>
+				    <%= theatre.address %>
+				    <%= theatre.contact %>
+				    <%= link_to "Show theatre" , theatre_path(theatre.id), class: "btn btn-warning" %>
+				    <%= link_to "Remove", theatre_path(theatre.id), method: :delete %>
+				  </div>
+				</div>
+			<%end%>
+		</div>
+
+	</div>
+	<br>
+	<%= link_to "Back", welcome_index_path, class: "btn btn-secondary" %>
+</div>
+
+
+
+			

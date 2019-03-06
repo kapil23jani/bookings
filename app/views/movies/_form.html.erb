@@ -1,0 +1,44 @@
+<%= form_for @movie, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :type, "Type:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :type, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :summary, "Summary:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :summary, class: "form-control" %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :thumbnail, "Thumbnail:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.file_field :thumbnail, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :cover_pics, "Cover Pictures:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.file_field :cover_pics,multiple: true, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :trailer, "Trailer:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.file_field :trailer, class: "form-control" %>
+        </div>
+      </div>
+      
+      <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
+      <%= link_to "Back", class: "btn btn-warning" %>
+ <% end %>

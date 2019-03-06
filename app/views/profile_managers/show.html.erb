@@ -1,0 +1,33 @@
+<% if @profile.present? %>
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-sm-4" >
+
+			<%= image_tag(@profile.picture,  class: "img-responsive img-thumbnail img-circle")%>
+			<%= link_to "Update Picture", edit_user_profile_manager_path(@profile), class: "nav-link " %>
+
+		</div>
+		<div class="col-sm-8">
+			<%= link_to "Update Profile", edit_user_profile_manager_path(@profile.user, @profile), class: "nav-link " %> 
+			<%= link_to "Delete Profile" ,user_profile_manager_path(@profile), method: :delete, data: {confirm: "Are You Sure"}, class: "nav-link"%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<br>
+			<strong>Name</strong>
+			<%= @profile.name %><br>
+			<strong>Address</strong>
+			<%= @profile.address%><br>
+			<strong>Experience</strong>
+			<%= @profile.experience %><br>
+			
+		</div>
+		
+	</div>
+</div>
+<%else %>
+ <%#= link_to "Add Profile" ,new_user_profile_manager_path(@user) , :class => "btn btn-warning" %>
+<%end%>
+

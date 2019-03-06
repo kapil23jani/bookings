@@ -1,0 +1,68 @@
+<div class="container"><br>
+	<div class="row">
+		<div class="col-sm-12">
+			<%= video_tag(url_for(@movie.trailer),style: 'height:auto;width:100%;') %>
+			
+		</div>
+	</div>
+
+	<br>
+	<div class="row">
+		<div class="col-sm-4">
+			<h2><%= @movie.name %></h2>
+			<h4><%= @movie.type %></h4>
+		</div>
+		<div class="col-sm-4">
+			
+		</div>
+		<div class="col-sm-4">
+			<%= link_to "Update", edit_movie_path(@movie), class: "btn btn-info" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<%= @movie.summary %>
+		</div>
+	</div><br>
+
+	<div class="row">
+		<% @movie.cover_pics.each do |pic| %>
+		<div class="col-sm-12">
+				<%= image_tag(pic, class: "img-fluid", alt: "Responsive image") %>
+			<%end%>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-sm-8">
+			<%= link_to "Back", showmovies_path(@movie), class: "btn btn-danger"%>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

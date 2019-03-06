@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_name: MyString
+  seats: 1
+  price: 1
+  screen: one
+
+two:
+  section_name: MyString
+  seats: 1
+  price: 1
+  screen: two

@@ -1,0 +1,35 @@
+<br>
+<bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Movie", new_movie_path, class: "btn btn-primary" %>
+
+<div class="container"><br>
+	<div class="row">
+		<% @movies.each do |movie| %> 
+		&nbsp;&nbsp;&nbsp;<div class="col-sm-3">
+			<div class="card" style="width: 18rem;">
+				<%= image_tag(movie.thumbnail) %>
+			  <div class="card-body">
+			   <h3><%= movie.name%></h3>
+			    <p class="card-text"><%= movie.type%></p>
+			    <%= link_to "Description", movie_path(movie), class: "btn btn-info" %>
+			    <%= link_to "Reviews", "#", class: "btn btn-info" %>
+			  </div>
+			  <%= link_to "Remove", movie_path(movie), method: :delete, class: "btn btn-danger" %>
+			</div>
+		</div>
+		<%end%>
+	</div>
+</div>
+<%= link_to "Back", welcome_index_path, class: "btn btn-warning" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
