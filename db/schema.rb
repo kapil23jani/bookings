@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_124417) do
+ActiveRecord::Schema.define(version: 2019_03_07_123625) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_03_06_124417) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer "price"
+    t.string "seats"
+    t.integer "movieshow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movieshow_id"], name: "index_bookings_on_movieshow_id"
+  end
+
   create_table "casts", force: :cascade do |t|
     t.string "name"
     t.integer "movie_id"
@@ -47,6 +56,21 @@ ActiveRecord::Schema.define(version: 2019_03_06_124417) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "release_date"
+    t.time "duration"
+  end
+
+  create_table "movieshows", force: :cascade do |t|
+    t.date "show_date"
+    t.time "show_time"
+    t.integer "movie_id"
+    t.integer "theatre_id"
+    t.integer "screen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_movieshows_on_movie_id"
+    t.index ["screen_id"], name: "index_movieshows_on_screen_id"
+    t.index ["theatre_id"], name: "index_movieshows_on_theatre_id"
   end
 
   create_table "profile_managers", force: :cascade do |t|

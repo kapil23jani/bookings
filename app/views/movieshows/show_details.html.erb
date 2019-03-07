@@ -1,0 +1,54 @@
+<br>
+<div class="container">
+	<div class="row">
+		<% @shows.each do |show| %>
+				<div class="col-sm-4">
+					<div class="card">
+		  			<div class="card-header">
+		    			<%= show.theatre.name %>
+					  </div>
+					  <div class="card-body">
+					    <h5 class="card-title">Date: <%= show.show_date.strftime('%D-%M') %>
+									Time:<%= show.show_time.strftime('%H:%M')%></h5>
+					    <p class="card-text">
+					    	<% show.theatre.screens.each do |screen| %>
+					    	<%= screen.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    	<%= link_to "Seats Preview", "#", class: "btn btn-info", :id => "show_seats"%>
+					    	<%= link_to "Book", movieshow_bookings_path(show), class: "btn btn-success" %>
+					    	<%end%>
+					    </p>
+					  </div>
+					</div>
+				</div>
+		<%end%>		
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Back", movieshows_path %>

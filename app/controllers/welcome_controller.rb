@@ -4,4 +4,5 @@ class WelcomeController < ApplicationController
   	@profile = @user.profile_manager if signed_in?
 
   end
+
 end

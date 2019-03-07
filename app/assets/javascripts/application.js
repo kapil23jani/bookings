@@ -16,12 +16,31 @@
 //= require_tree .
 //= require jquery
 
-
 $(document).ready(function(){
-	$("#section_form").click(function(){
-		$("#form-section").toggle();
+	$("#show_seats").click(function(){
+		$("#seats").toggle();
+
 	});
 });
 
+ $(function(){
+      $('.abc').click(function(){
+        var val = [];
+        $(':checkbox:checked').each(function(i){
+          val[i] = $(this).val();
+          console.log(val);
+          $("#data").text(val);
+
+        });
+      });
+    });
+
+
+ $(document).ready(function(){
+  var data = $("#hover").click(function(){
+    $("#data").text(data);
+    console.log("hi");
+  });
+});
 
 

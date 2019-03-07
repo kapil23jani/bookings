@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_date: 2019-03-07
+  show_time: 2019-03-07 11:15:13
+  movie: one
+  theatre: one
+  screen: one
+
+two:
+  show_date: 2019-03-07
+  show_time: 2019-03-07 11:15:13
+  movie: two
+  theatre: two
+  screen: two

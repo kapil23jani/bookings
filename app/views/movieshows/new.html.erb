@@ -1,0 +1,14 @@
+<%= form_for @movieshow do |f| %>
+	<%= f.label :date %>
+	<%= f.date_field :show_date %>
+	<%= f.label :showtime %>
+	<%= f.time_field :show_time%>
+	<%=f.select :movie_id, options_from_collection_for_select(Movie.all, :id, :name) %>
+	<%= f.select :theatre_id, options_from_collection_for_select(Theatre.all, :id, :name) %>
+	<%#=f.select :screen_id, options_from_collection_for_select(Screen.all, :id, :name) %>
+
+	<%= f.grouped_collection_select :screen_id, Theatre.order(:name), :screens, :name, :id, :name %>
+	<%= f.submit %>
+	<%end%>
+	
+	

@@ -1,0 +1,36 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<br><div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="card">
+		      	<div class="card-body">
+			        <h5 class="card-title">
+			        	Theatre Name: <%= @movieshow.theatre.name %></h5>
+			        <p class="card-text">
+			        	Address: <%= @movieshow.theatre.address%>
+			        	<h4>Movie Name: <%= @movieshow.movie.name%></h4>
+			        	Screen Name: <%= @movieshow.screen.name %><br>
+			        	Date: <%= @movieshow.show_date.strftime('%d-%m') %>&nbsp;&nbsp;
+			        	Time: <%= @movieshow.show_time.strftime('%H-%M') %>
+			        </p>
+			        Booked Seats: <p id="data"></p>
+		    	</div>
+			</div>
+		</div>
+ 		<div class="col-sm-8">
+ 			<%@movieshow.screen.sections.each do |rec| %>
+				<p id="hover"><%= rec.section_name %></p>
+				<%= rec.price %><br>
+				<% (1..rec.seats).each_with_index do |seats,i| %>
+					<%= check_box_tag :seats, i, false, class: 'abc'%>
+				<%if seats % 10 == 0 %>
+					<br>
+				<%end%>
+   			<%end%>
+		<%end%> 
+ 		</div>
+ 	</div>
+</div>
+
+
+<%= link_to "Back", movieshows_path() %>

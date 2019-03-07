@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
 
   resources :movies
+  resources :movieshows do 
+  	resources :bookings
+  end
 
   get 'allshow' => "theatres#allshow"
   get 'showmovies' => "movies#showmovies"
+  get 'show_details' => "movieshows#show_details"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

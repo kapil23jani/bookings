@@ -1,0 +1,44 @@
+
+
+
+
+
+<% @shows.each do |show| %>
+<%= show.theatre.name%>
+<%= show.show_date %>
+<%= show.show_time.strftime('%H:%M')%>
+<% show.theatre.screens.each do |screen| %><br>
+<%= screen.name %>
+
+<% screen.sections.each do |rec| %>
+<div class="row" id="seats" style="display: none;"> 
+<div class="col-sm-12">
+
+<%= rec.section_name %>
+<%= rec.price %>
+<br>
+<% (1..rec.seats).each_with_index do |seats,i| %>
+<%= check_box_tag :seats, i, false, class: 'abc'%>
+<%if seats % 10 == 0 %>
+	<br>
+	<%end%>
+   		<%end%>
+<%end%>
+
+<%end%><br>
+<% show.screen.sections.each do |sec| %>
+		<%= sec.section_name %>
+		<br>
+		<% (1..sec.seats).each_with_index do |seats,i| %>
+			<%= check_box_tag :seats, i, false, class: 'abc'%>
+    			<%if seats % 10 == 0 %>
+     			<br>
+     			<%end%>
+   		<%end%>
+		</div>
+	</div>
+   <%end%>
+<br>
+<%end%>
+
+<p id="data"></p>

@@ -9,7 +9,8 @@
 				<%= image_tag(movie.thumbnail) %>
 			  <div class="card-body">
 			   <h3><%= movie.name%></h3>
-			    <p class="card-text"><%= movie.type%></p>
+			    <p class="card-text"><%= movie.type%>  Release Date <%= movie.release_date%></p>
+			    <p class="card-text"></p>
 			    <%= link_to "Description", movie_path(movie), class: "btn btn-info" %>
 			    <%= link_to "Reviews", "#", class: "btn btn-info" %>
 			  </div>
@@ -19,9 +20,11 @@
 		<%end%>
 	</div>
 </div>
-<%= link_to "Back", welcome_index_path, class: "btn btn-warning" %>
+<%= link_to "Back", welcome_index_path, class: "btn btn-warning" %>	
 
 
+
+<%#=select_tag :actors, options_from_collection_for_select(Cast.all, :id, :name), multiple: true %>
 
 
 
