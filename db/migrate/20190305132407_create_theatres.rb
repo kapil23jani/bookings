@@ -5,6 +5,7 @@ class CreateTheatres < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :contact
       t.string :facilities
+      t.references :user
 
       t.timestamps
     end

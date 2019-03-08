@@ -14,7 +14,7 @@
 					    	<% show.theatre.screens.each do |screen| %>
 					    	<%= screen.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					    	<%= link_to "Seats Preview", "#", class: "btn btn-info", :id => "show_seats"%>
-					    	<%= link_to "Book", movieshow_bookings_path(show), class: "btn btn-success" %>
+					    	<%= link_to "Book", new_user_movieshow_booking_path(current_user,show), class: "btn btn-success" %>
 					    	<%end%>
 					    </p>
 					  </div>
@@ -25,30 +25,4 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%= link_to "Back", movieshows_path %>
+<%= link_to "Back", user_movieshows_path(current_user) %>

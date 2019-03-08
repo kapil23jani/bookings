@@ -5,22 +5,25 @@ Rails.application.routes.draw do
 
   resources :users do
   	resources :profile_managers	
-  end
 
-  resources :theatres do 
+  	resources :theatres do 
   	resources :screens do
   		resources :sections
   	end
   end
 
-
-  resources :movies
-  resources :movieshows do 
-  	resources :bookings
+  	resources :movies
+  	resources :movieshows do 
+  		resources :bookings
+  end
+  	get 'allshow' => "theatres#allshow"
+  	get 'showmovies' => "movies#showmovies"
+  	get 'show_details' => "movieshows#show_details"
   end
 
-  get 'allshow' => "theatres#allshow"
-  get 'showmovies' => "movies#showmovies"
-  get 'show_details' => "movieshows#show_details"
+  
+
+  
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

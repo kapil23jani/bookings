@@ -16,7 +16,7 @@
 			
 		</div>
 		<div class="col-sm-4">
-			<%= link_to "Update", edit_movie_path(@movie), class: "btn btn-info" %>
+			<%= link_to "Update", edit_user_movie_path(current_user,@movie), class: "btn btn-info" %>
 		</div>
 	</div>
 
@@ -36,7 +36,7 @@
 	<br><br>
 	<div class="row">
 		<div class="col-sm-8">
-			<%= link_to "Back", showmovies_path(@movie), class: "btn btn-danger"%>
+			<%= link_to "Back", user_showmovies_path(current_user,@movie), class: "btn btn-danger"%>
 		</div>
 	</div>
 </div>

@@ -6,10 +6,10 @@
 
 
 <br>
-<bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Show", new_movieshow_path, class: "btn btn-info" %>
+<bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Show", new_user_movieshow_path(current_user), class: "btn btn-info" %>
 
 	<%@movies.each do |movie| %>
-	<center><%= link_to movie.name, show_details_path(movie.id) %><br></center>
+	<center><%= link_to movie.name, user_show_details_path(current_user,movie.id) %><br></center>
 	<%end%>
 
 <%= link_to "Back", welcome_index_path, class: "btn btn-warning" %>	

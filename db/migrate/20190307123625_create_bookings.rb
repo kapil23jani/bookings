@@ -4,6 +4,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :seats
       t.references :movieshow, foreign_key: true
+      t. references :user
 
       t.timestamps
     end

@@ -1,7 +1,8 @@
 <br>
-<%= link_to "Theatres", allshow_path, class: "btn btn-primary", :id => 'theatreshow' %>
-<%= link_to "Movies", showmovies_path, class: "btn btn-info" %>
+<%= link_to "Theatres", user_allshow_path(@user), class: "btn btn-primary", :id => 'theatreshow' %>
+<%= link_to "Movies", user_showmovies_path(@user), class: "btn btn-info" %>
 <%#= link_to "Bookings", movieshow_bookings_path, class: "btn btn-success" %>
 
 
-<%= link_to "Shows", movieshows_path, class: "btn btn-secondary" %>
+<%= link_to "Shows", user_movieshows_path(@user), class: "btn btn-secondary" %>
+<%= link_to "Bookings", "#", class: "btn btn-warning" %>

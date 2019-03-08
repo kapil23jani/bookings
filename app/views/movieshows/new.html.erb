@@ -1,4 +1,4 @@
-<%= form_for @movieshow do |f| %>
+<%= form_for ([current_user,@movieshow]) do |f| %>
 	<%= f.label :date %>
 	<%= f.date_field :show_date %>
 	<%= f.label :showtime %>

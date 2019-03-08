@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 2019_03_07_123625) do
     t.integer "price"
     t.string "seats"
     t.integer "movieshow_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movieshow_id"], name: "index_bookings_on_movieshow_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "casts", force: :cascade do |t|
@@ -54,10 +56,12 @@ ActiveRecord::Schema.define(version: 2019_03_07_123625) do
     t.string "name"
     t.string "type"
     t.text "summary"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "release_date"
     t.time "duration"
+    t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
   create_table "movieshows", force: :cascade do |t|
@@ -107,8 +111,10 @@ ActiveRecord::Schema.define(version: 2019_03_07_123625) do
     t.string "address"
     t.string "contact"
     t.string "facilities"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_theatres_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

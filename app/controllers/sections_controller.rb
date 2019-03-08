@@ -9,7 +9,14 @@ class SectionsController < ApplicationController
 		@screen = Screen.find(params[:screen_id])
 		@section = @screen.sections.create(section_params)
 		if @section.save 
-			redirect_to allshow_path(@section)
+			redirect_to user_allshow_path(@section)
+		end
+	end
+
+	def destroy 
+		@section = Section.find(params[:id])
+		if @section.destroy
+			redirect_to user_allshow_path(current_user,@section)
 		end
 	end
 

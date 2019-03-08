@@ -1,5 +1,5 @@
 class Screen < ApplicationRecord
   belongs_to :theatre
-  has_many :sections
-  has_many :movieshows 
+  has_many :sections, dependent: :destroy
+  has_many :movieshows, dependent: :destroy
 end

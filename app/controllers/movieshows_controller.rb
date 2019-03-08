@@ -13,7 +13,7 @@ class MovieshowsController < ApplicationController
 	def create
 		@movieshow = Movieshow.create(movieshow_params)
 		if @movieshow.save
-			redirect_to movieshows_path(@movieshow)
+			redirect_to user_movieshows_path(current_user,@movieshow)
 		end
 	end
 

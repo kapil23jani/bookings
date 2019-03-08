@@ -8,9 +8,11 @@ class TheatresController < ApplicationController
 	end
 
 	def create
-		@theatre = Theatre.create(theatre_params)
+		binding.pry
+		@user = current_user
+		@theatre = @user.theatres.create(theatre_params)
 		if @theatre.save
-			redirect_to allshow_path(@theatre)
+			redirect_to user_allshow_path(current_user,@theatre)
 		end
 	end
 
@@ -38,7 +40,7 @@ class TheatresController < ApplicationController
 	def destroy
 		@theatre = Theatre.find(params[:id])
 		if @theatre.destroy
-			redirect_to allshow_path(@theatre)
+			redirect_to user_allshow_path(current_user,@theatre)
 		end
 	end
 
@@ -48,6 +50,6 @@ class TheatresController < ApplicationController
 	private 
 
 	def theatre_params
-		params.require(:theatre).permit(:name, :address, :contact, :facilities)
+		params.require(:theatre).permit(:user_id,:name, :address, :contact, :facilities)
 	end
 end

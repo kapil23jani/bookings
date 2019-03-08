@@ -13,11 +13,15 @@
 			        	Date: <%= @movieshow.show_date.strftime('%d-%m') %>&nbsp;&nbsp;
 			        	Time: <%= @movieshow.show_time.strftime('%H-%M') %>
 			        </p>
-			        Booked Seats:<%= text_field :seats,'' ,id: "seat" %></p>
+			        <%= form_for ([current_user,@movieshow, @booking]) do |form| %>
+			        <%= form.hidden_field :movieshow_id, value: @movieshow.id %>
+			        Booked Seats:<%= form.text_field :seats,id: "seat" %></p>
 			        Price: <p id="price"></p>
-			        Tota Price: <%= text_field :price, '',id: "final_price" %>
+			        Tota Price: <%= form.text_field :price ,id: "final_price" %>
 			        <br>
-			        <%= link_to "Book Now" ,movieshow_bookings_path(@movieshow.id), method: :post, class: "btn btn-success"%>
+			        <%=form.submit %>
+			        <%end%>
+			        
 		    	</div>
 			</div>
 		</div>
@@ -39,5 +43,4 @@
  		<%= image_tag(@movieshow.movie.thumbnail) %>
  	</div>
 </div>
-
-<%= link_to "Back", movieshows_path() %>
+<%= link_to "Back", user_movieshows_path(current_user) %>

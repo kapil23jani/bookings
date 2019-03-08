@@ -1,5 +1,5 @@
 <br>
-<bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Movie", new_movie_path, class: "btn btn-primary" %>
+<bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Movie", new_user_movie_path(current_user), class: "btn btn-primary" %>
 
 <div class="container"><br>
 	<div class="row">
@@ -11,10 +11,10 @@
 			   <h3><%= movie.name%></h3>
 			    <p class="card-text"><%= movie.type%>  Release Date <%= movie.release_date%></p>
 			    <p class="card-text"></p>
-			    <%= link_to "Description", movie_path(movie), class: "btn btn-info" %>
+			    <%= link_to "Description", user_movie_path(current_user,movie), class: "btn btn-info" %>
 			    <%= link_to "Reviews", "#", class: "btn btn-info" %>
 			  </div>
-			  <%= link_to "Remove", movie_path(movie), method: :delete, class: "btn btn-danger" %>
+			  <%= link_to "Remove", user_movie_path(current_user,movie), method: :delete, class: "btn btn-danger" %>
 			</div>
 		</div>
 		<%end%>

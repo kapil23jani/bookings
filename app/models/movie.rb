@@ -4,5 +4,6 @@ class Movie < ApplicationRecord
 	has_one_attached :trailer
 	has_many :casts
 	self.inheritance_column = :_type_disabled
-	has_many :movieshows
+	has_many :movieshows, dependent: :destroy
+	belongs_to :user
 end

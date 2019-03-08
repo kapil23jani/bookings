@@ -26,21 +26,35 @@ $(document).ready(function(){
  $(function(){
       $('.abc').click(function(){
         var val = [];
+        var price = [];
+        
         $(':checkbox:checked').each(function(i){
           val[i] = $(this).val();
           console.log(val);
-          $("#data").text(val);
+          $(':checked:checked').each(function(j){
+            price[j] = $(this).attr("data-price");
+          })
+          console.log(price);
+          $("#seat").val(val);
+          // $("#price").text(price);
+          var final_price = 0;
+          for (var i = 0; i < price.length; i++) {
+              final_price += price[i] << 0;
 
+            };
+          $("#final_price").val(final_price);
+          });
         });
       });
+
+ $(document).ready(function () {
+ 	var selectedsection = []
+    $('p').click(function () {
+        var seactioname= this.className;
+        console.log(seactioname);
+        selectedsection.push(seactioname);
+        console.log(selectedsection);
+        $("#sname").text(selectedsection);
+        var price = $(this.className).attr("id");
     });
-
-
- $(document).ready(function(){
-  var data = $("#hover").click(function(){
-    $("#data").text(data);
-    console.log("hi");
-  });
 });
-
-
