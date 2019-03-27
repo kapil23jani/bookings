@@ -1,8 +1,32 @@
-<br>
-<%= link_to "Theatres", user_allshow_path(@user), class: "btn btn-primary", :id => 'theatreshow' %>
-<%= link_to "Movies", user_showmovies_path(@user), class: "btn btn-info" %>
-<%#= link_to "Bookings", movieshow_bookings_path, class: "btn btn-success" %>
+<% if @movies.present? %>
+<div class="container"><br>
+	<div class="row" id="movies">
+		<% current_user.movies.each do |movie| %> 
+		&nbsp;&nbsp;<div class="col-sm-3">
+			<div class="card" style="width: 20rem;">
+				<%= image_tag(movie.thumbnail) %>
+			  <div class="card-body">
+				  <center><h3><%= movie.name%></h3></center>
+					<p class="card-text"><%= movie.type%>  Release Date <%= movie.release_date%></p>
+					<p class="card-text"></p>
+					<%= link_to "Description", user_movie_path(current_user,movie), class: "btn btn-info" %>
+					<%= link_to "Reviews", "#", class: "btn btn-info" %>
+				  </div>
+				</div>
+			</div>
+		<%end%>
+	</div>
+</div>
+<%end%>
 
 
-<%= link_to "Shows", user_movieshows_path(@user), class: "btn btn-secondary" %>
-<%= link_to "Bookings", "#", class: "btn btn-warning" %>
+
+
+
+
+
+
+
+
+
+

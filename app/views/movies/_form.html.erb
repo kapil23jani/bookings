@@ -1,19 +1,32 @@
-<%= form_for ([current_user,@movie]), :html => {:class => "form-horizontal center"} do |f| %>
+<%= form_for ([current_user,@movie]) do |f| %>
+  <% if @movie.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@movie.errors.count, "error") %> prohibited
+            this movie from being saved:
+          </h2>
+          <ul>
+            <% @movie.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="form-group">
-        <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+        <%= f.label :name, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.text_field :name, class: "form-control" %>
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :type, "Type:", class: "col-md-4 control-label" %>
+        <%= f.label :type, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.text_field :type, class: "form-control" %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :summary, "Summary:", class: "col-md-4 control-label" %>
+        <%= f.label :summary, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.text_area :summary, class: "form-control" %>
         </div>
@@ -21,14 +34,14 @@
 
 
       <div class="form-group">-
-        <%= f.label :thumbnail, "Thumbnail:", class: "col-md-4 control-label" %>
+        <%= f.label :thumbnail, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.file_field :thumbnail, class: "form-control" %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :releasedate, "Release Date:", class: "col-md-4 control-label" %>
+        <%= f.label :releaseDate, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.date_field :release_date, class: "form-control" %>
         </div>
@@ -36,25 +49,25 @@
 
 
       <div class="form-group">
-        <%= f.label :Duration, "Duration:", class: "col-md-4 control-label" %>
+        <%= f.label :Duration, class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.text_field :duration, class: "form-control" %>
         </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :cover_pics, "Cover Pictures:", class: "col-md-4 control-label" %>
+        <%= f.label "Cover Pictures:", class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.file_field :cover_pics,multiple: true, class: "form-control" %>
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :trailer, "Trailer:", class: "col-md-4 control-label" %>
+        <%= f.label "Trailer:", class: "col-md-4 control-label" %>
         <div class="col-md-8">
           <%= f.file_field :trailer, class: "form-control" %>
         </div>
       </div>
-      
+
       <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
       <%= link_to "Back",user_showmovies_path(current_user) , class: "btn btn-warning" %>
  <% end %>

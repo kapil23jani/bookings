@@ -22,31 +22,45 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item <%= 'active' if params[:controller] == 'welcomes' %>">
         <%= link_to "Home", welcome_index_path, :class => "nav-link" %>
       </li>
 
-      <% if @user.present? %>
-          <li class="nav-item">
-              <% if @user.profile_manager.present? %>
-                <%= link_to "Profile", user_profile_manager_path(@user.id, @user.profile_manager.id), :class => "nav-link" if signed_in? %></li>
-          <li class="nav-item dropdown"><%= link_to "Theatre", theatres_path, :class => "nav-link dropdown-toggle data-target= dropdown" %></li>
-                
-          <%else%>
-            <li class = "nav-item" ><%= link_to "Update Profile", new_user_profile_manager_path(@user), :class => "nav-link" if signed_in? %></li>
-                <%end%> 
+      <% if current_user.present? %>
+        <li class="nav-item <%= 'active' if params[:controller] == 'profile_managers' %>">
+            <%= link_to "Profile", new_user_profile_manager_path(current_user), class: "nav-link"  %></li>
+        <li class="nav-item <%= 'active' if params[:controller] == 'theatres' %>">
+          <%= link_to "Theatres", user_allshow_path(current_user), class: "nav-link", :id => 'theatreshow'  %>
+        </li>
+        <li class="nav-item <%= 'active' if params[:controller] == 'movies' %>">
+        <%= link_to "Movies", user_showmovies_path(current_user), class: "nav-link" %>
+        </li>
+
+        <li class="nav-item <%= 'active' if params[:controller] == 'movieshows' %>">
+          <%= link_to "Shows", user_movieshows_path(current_user), class: "nav-link" %>
+        </li>
+
+        <li class="nav-item <%= 'active' if params[:controller] == 'bookings' %>">
+        <%= link_to "Bookings", user_bookings_path(current_user), class: "nav-link" %>
+        </li>
+
+        <li class="nav-item <%= 'active' if params[:controller] == 'casts' %>">
+        <%= link_to "Casting" ,user_casts_path(current_user), class: "nav-link"   %>
+        </li>
+
+
+      <%else%>
+          <li class = "nav-item" ></li>
       <% end %>
-            
       </li>
     </ul>
     <ul class="navbar-nav">
       <% if current_user.present? %>
-          <li><%= link_to 'Logout', destroy_user_session_path, :class => "nav-link", method: :delete, data: {confirm:"Are you Sure"} %></li>
-        <% else %>
-          <li><%= link_to 'Sign In', new_user_session_path, :class => "nav-link" %></li>
-        <%end%>
+        <li><%= link_to 'Logout', destroy_user_session_path, :class => "nav-link", method: :delete, data: {confirm:"Are you Sure"} %></li>
+      <% else %>
+        <li><%= link_to 'Sign In', new_user_session_path, :class => "nav-link" %></li>
+      <%end%>
     </ul>
-      
     </form>
   </div>
 </nav>

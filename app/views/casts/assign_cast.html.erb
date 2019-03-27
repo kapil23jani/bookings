@@ -1,0 +1,5 @@
+<%= form_for ([current_user,@assign_cast]) do |f| %>
+    <%= f.label :MovieName %>
+    <%= f.select :cast_ids, options_from_collection_for_select(current_user.casts.all, :id, :name), {:class=>'form-control'}, multiple: true %>
+    <%= f.submit%>
+<%end%>

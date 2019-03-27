@@ -1,18 +1,18 @@
 <div class="container">
-	<div class="row">
-		<div class="col-sm-4">
-			<%= form_for ([current_user, @theatre]) do |form| %>
-				<%= form.label :name %>
-				<%= form.text_field :name, class: "form-control" %><br>
-				<%= form.label :address %>
-				<%= form.text_area :address, class: "form-control" %><br>
-				<%= form.label :contact %>
-				<%= form.text_field :contact, class: "form-control" %><br>
-				<%= form.label :facilities %>
-				<%= form.text_field :facilities, class: "form-control" %><br>
-				<%= form.submit class: "btn btn-success" %>
-			<%end %>
-			<%= link_to "Back", user_allshow_path()%>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= form_for ([current_user, @theatre]) do |form| %>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %><br>
+        <%= form.label :address %>
+        <%= form.text_area :address, class: "form-control" %><br>
+        <%= form.label :contact %>
+        <%= form.text_field :contact, class: "form-control" %><br>
+        <%= form.label :facilities %>
+        <%= form.text_field :facilities, class: "form-control" %><br>
+        <%= form.submit class: "btn btn-success" %>
+      <%end %>
+      <%= link_to "Back", user_allshow_path()%>
+    </div>
+  </div>
 </div>

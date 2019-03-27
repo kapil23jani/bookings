@@ -1,0 +1,3 @@
+ <% @shows.each do |show| %>
+ 	<%= link_to "#{show.show_time.strftime('%H:%M')}",new_user_movieshow_booking_path(current_user,show)%>
+ <%end%>

@@ -1,11 +1,1 @@
-<%= form_for ([current_user,@screen.theatre,@screen,@section]) do |form| %>
-<%= form.label :name %>
-<%= form.text_field :section_name %>
-<%= form.label :seats %>
-<%= form.text_field :seats %>
-<%= form.label :price %>
-<%= form.text_field :price %>
-<%= form.submit %>
-<%end%>
-
-<%= link_to "Back", user_theatre_path(current_user, @screen.theatre.id) %>
+ <%= render partial:"form", object: @section %>

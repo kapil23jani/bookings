@@ -1,30 +1,45 @@
 // This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
+// listed below.                                
+//                                             
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
 // vendor/assets/javascripts directory can be referenced here using a relative path.
-//
+//                                            
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
+//                                            
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require jquery
+  
+  
 
-$(document).ready(function(){
-	$("#show_seats").click(function(){
-		$("#seats").toggle();
 
-	});
+$( document ).on('turbolinks:load', function() {
+  $(".search_booking").click(function(){
+     var date = $(this).html();
+     var movieId = $(this).attr('data-movie-id');
+      console.log($(this).attr('data-movie-id'));
+      console.log(date);
+      $.ajax({
+        type:'get',
+        dataType: 'script',
+        url: '/sort_movie_show',
+        data:{
+          sort_movie_show: date,
+          movie_id: movieId 
+        }
+      })
+    });
 });
-
  $(function(){
-      $('.abc').click(function(){
+      $('.seat').click(function(){
         var val = [];
         var price = [];
         
@@ -36,7 +51,6 @@ $(document).ready(function(){
           })
           console.log(price);
           $("#seat").val(val);
-          // $("#price").text(price);
           var final_price = 0;
           for (var i = 0; i < price.length; i++) {
               final_price += price[i] << 0;
@@ -46,15 +60,3 @@ $(document).ready(function(){
           });
         });
       });
-
- $(document).ready(function () {
- 	var selectedsection = []
-    $('p').click(function () {
-        var seactioname= this.className;
-        console.log(seactioname);
-        selectedsection.push(seactioname);
-        console.log(selectedsection);
-        $("#sname").text(selectedsection);
-        var price = $(this.className).attr("id");
-    });
-});

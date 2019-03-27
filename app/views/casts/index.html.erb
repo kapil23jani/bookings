@@ -1,0 +1,22 @@
+<%= link_to  "New", new_user_cast_path(current_user) %>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<table class="table">
+				<tr>
+					<th>Movie Name</th>
+					<th>Assign Cast</th>
+				</tr>
+				<% current_user.movies.each do |rec| %>
+				<tr>
+					<td><%= rec.name %></td>
+					<td><%= link_to "Assign_Actor", user_assign_cast_path(current_user,rec) %></td>
+				</tr>
+				<%end%>
+			</table>
+		</div>
+	</div>
+</div>
+
+		<%= link_to "Back", welcome_index_path(current_user), class: "btn btn-warning" %>

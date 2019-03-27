@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   def index
-  	@user = current_user
-  	@profile = @user.profile_manager if signed_in?
-  	@bookings = @user.bookings
+    @profile = current_user.profile_manager if signed_in?
+    @bookings = current_user.bookings if signed_in?
+    @movies = Movie.all
+    
   end
 end

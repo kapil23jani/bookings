@@ -1,10 +1,10 @@
 <% @default_seats = []%>
 
-<% @movieshow.bookings.each do |booking|%>
-<% booking.id%>
-<% seat = booking.seats.to_s.split(",")%><br>
-<% @default_seats += seat%> 
-<% end%>
+
+<% @booking.seats.split(",") %>
+
+
+
 
 <% @default_seats %>
 <%= link_to "Back", user_movieshows_path(current_user), class: "btn btn-danger" %>
@@ -43,7 +43,7 @@
                     <p class="<%=rec.section_name %>" id = "<%= rec.price %>">Section Name : <%= rec.section_name %></p>
                         <span class="<%= rec.price %>">Price: <%= rec.price %></span><br>
                         <% (1..rec.seats).each_with_index do |seats,i| %>
-                            <span class="<%=rec.section_name %>" id= "spanseat"><%= check_box_tag :seats,"#{@@section_name}#{i}",false, data: { "price" => "#{rec.price}" } ,class: 'seat', disabled:@default_seats.include?("#{@@section_name}#{i}") %></span>
+                            <span class="<%=rec.section_name %>" id= "spanseat"><%= check_box_tag :seats,"#{@@section_name}#{i}",@booking.seats.split(",").include?("#{@@section_name}#{i}"), data: { "price" => "#{rec.price}" } ,class: 'seat' %></span>
                             <%if seats % 10 == 0 %>
                                 <br>
                             <%end%>

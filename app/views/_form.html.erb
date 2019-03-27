@@ -1,14 +1,14 @@
-<%= form_for ([@user, @profile ]) do |form| %>
-<%= form.label :name %>
-<%= form.text_field :name %>
-<%= form.radio_button :gender, true, :class => 'form-control radio-inline' %> Male
-<%= form.radio_button :gender, false, :class => 'form-control radio-inline' %>Female
-<%= form.label :address %>
-<%= form.area_field :address %>
-<%= form.label :experience %>
-<%= form.text_field :experience %>
-<%= form.label :Picture %>
-<%= form.file_field :picture %>
-<%= form.submit class: "btn btn-success" %>
+<%= form_for ([current_user, @profile ]) do |form| %>
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+	<%= form.radio_button :gender, true, :class => 'form-control radio-inline' %> Male
+	<%= form.radio_button :gender, false, :class => 'form-control radio-inline' %>Female
+	<%= form.label :address %>
+	<%= form.area_field :address %>
+	<%= form.label :experience %>
+	<%= form.text_field :experience %>
+	<%= form.label :Picture %>
+	<%= form.file_field :picture %>
+	<%= form.submit class: "btn btn-success" %>
 <%end %>
 

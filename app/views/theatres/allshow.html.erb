@@ -1,27 +1,25 @@
 <br>
-
 <%= link_to "Add Theatre", new_user_theatre_path(current_user), class: "btn btn-primary" %><br>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6">
-			<% @theatres.each  do |theatre| %>
-			<br>
-				<div class="card" style="width: 18rem;">
-				  <div class="card-body">
-				    <%= theatre.name %>
-				    <%= theatre.address %>
-				    <%= theatre.contact %>
-				    <%= link_to "Show theatre" , user_theatre_path(current_user,theatre.id), class: "btn btn-warning" %>
-				    <%= link_to "Remove", user_theatre_path(current_user,theatre.id), method: :delete %>
-				  </div>
-				</div>
-			<%end%>
+<% if @theatres.present? %>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<% current_user.theatres.each  do |theatre| %><br>
+					<div class="card" style="width: 18rem;">
+					  <div class="card-body">
+					    <%= theatre.name %>
+					    <%= theatre.address %>
+					    <%= theatre.contact %>
+					    <%= link_to "Show theatre" , user_theatre_path(current_user,theatre.id), class: "btn btn-warning" %>
+					    <%= link_to "Remove", user_theatre_path(current_user,theatre.id), method: :delete %>
+					  </div>
+					</div>
+				<%end%>
+			</div>
 		</div>
-
 	</div>
-	<br>
-	<%= link_to "Back", welcome_index_path, class: "btn btn-secondary" %>
-</div>
+<%end%><br>
+<%= link_to "Back", welcome_index_path, class: "btn btn-secondary" %>
 
 
 

@@ -1,22 +1,22 @@
-<br>	
-<%# @movieshows.each do |show| %>
-<%#= link_to show.show_date, movieshow_path(show) %>
-<%#end%>
-
-
-
-<br>
 <bR>&nbsp;&nbsp;&nbsp;<%= link_to "Add Show", new_user_movieshow_path(current_user), class: "btn btn-info" %>
 
-	<%@movies.each do |movie| %>
-	<center><%= link_to movie.name, user_show_details_path(current_user,movie.id) %><br></center>
-	<%end%>
+<div class="container">
+  <div class="row">
+      <%current_user.movies.each do |movie| %>
+        <div class="col-sm-4">
+          <div class="card" style="width: 14rem;">
+              <%= image_tag(movie.thumbnail)%>
+              <div class="card-body">
+                <center><p class="card-text"><%= link_to movie.name, user_movie_path(current_user,movie.id) %></p></center>
+              </div>
+          </div><br>
+        </div>
+      <%end%>
+  </div>
+</div>
 
-<%= link_to "Back", welcome_index_path, class: "btn btn-warning" %>	
 
-
-
-<%#=select_tag :actors, options_from_collection_for_select(Cast.all, :id, :name), multiple: true %>
+<%= link_to "Back", welcome_index_path, class: "btn btn-warning" %> 
 
 
 

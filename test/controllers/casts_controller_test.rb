@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CastingsControllerTest < ActionDispatch::IntegrationTest
+class CastsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

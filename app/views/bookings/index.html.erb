@@ -1,43 +1,32 @@
-<%@@first_char = []%>
-<br><div class="container">
+<!-- <input type="text" placeholder="Search.." id="search_booking"> -->
+<div class="container">
 	<div class="row">
-		<div class="col-sm-4">
-			<div class="card">
-		      	<div class="card-body">
-			        <h5 class="card-title">
-			        	Theatre Name: <%= @movieshow.theatre.name %></h5>
-			        <p class="card-text">
-			        	Address: <%= @movieshow.theatre.address%>
-			        	<h4>Movie Name: <%= @movieshow.movie.name%></h4>
-			        	Screen Name: <%= @movieshow.screen.name %><br>
-			        	Date: <%= @movieshow.show_date.strftime('%d-%m') %>&nbsp;&nbsp;
-			        	Time: <%= @movieshow.show_time.strftime('%H-%M') %>
-			        </p>
-			        Booked Seats:<%= text_field :seats,'' ,id: "seat" %></p>
-			        Price: <p id="price"></p>
-			        Tota Price: <%= text_field :price, '',id: "final_price" %>
-			        <br>
-			        <%= link_to "Book Now" ,movieshow_bookings_path(@movieshow.id), method: :post, class: "btn btn-success"%>
-		    	</div>
-			</div>
+			<div class="col-sm-10">
+				<table class="table">
+					<tr>
+						<th>Theatre Name</th>
+						<th>Movie Name</th>
+						<th>Screen</th>
+						<th>Show Date</th>
+						<th>Show Time</th>
+						<th>Tickets</th>
+						<th>Amount</th>
+						<th>Actions</th>
+					</tr>
+					<% current_user.bookings.each do |booking| %> 
+					<tr>
+						<td><%= booking.movieshow.theatre.name%></td>
+						<td><%= booking.movieshow.movie.name %></td>
+						<td><%= booking.movieshow.screen.name %></td>
+						<td><%= booking.movieshow.show_date %></td>
+						<td><%= booking.movieshow.show_time.strftime("%H:%M") %></td>
+						<td><%= booking.seats%></td>
+						<td><%= booking.price %></td>
+						<td><%= link_to "Edit Booking", edit_user_booking_path(current_user,booking.id) %>
+					</tr>
+					<%end%>
+				</table>
 		</div>
- 		<div class="col-sm-4">
- 			<%@movieshow.screen.sections.each do |rec| %><br>
- 			<% @@section_name = rec.section_name[0]%>
- 				<div class="<%=rec.section_name %>" id= "" name = "">
-					<p class="<%=rec.section_name %>" id = "<%= rec.price %>"><%= rec.section_name %></p>
-						<span class="<%= rec.price %>"><%= rec.price %></span><br>
-						<% (1..rec.seats).each_with_index do |seats,i| %>
-							<span class="<%=rec.section_name %>" id= "spanseat"><%= check_box_tag :seats,"#{@@section_name}#{i}", false, data: { "price" => "#{rec.price}" } ,class: 'abc'%></span>
-							<%if seats % 10 == 0 %>
-								<br>
-							<%end%>
-	   				<%end%>
-   			</div>
-		<%end%> 
- 		</div>
- 		<%= image_tag(@movieshow.movie.thumbnail) %>
- 	</div>
-</div>
-
-<%= link_to "Back", movieshows_path() %>
+	</div>
+</div><br>
+<%= link_to "Back", welcome_index_path %>

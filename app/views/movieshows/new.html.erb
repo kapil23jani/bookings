@@ -1,14 +1,44 @@
-<%= form_for ([current_user,@movieshow]) do |f| %>
-	<%= f.label :date %>
-	<%= f.date_field :show_date %>
-	<%= f.label :showtime %>
-	<%= f.time_field :show_time%>
-	<%=f.select :movie_id, options_from_collection_for_select(Movie.all, :id, :name) %>
-	<%= f.select :theatre_id, options_from_collection_for_select(Theatre.all, :id, :name) %>
-	<%#=f.select :screen_id, options_from_collection_for_select(Screen.all, :id, :name) %>
+<div class="contianer">
+  <div class="row" id="show_form">
+    <div class="col-sm-12">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <center><h5 class="card-title">Show Assign</h5></center>
+            <%= form_for ([current_user,@movieshow]) do |f| %>
+              <% if @movieshow.errors.any? %>
+                    <div id="error_explanation">
+                      <h2>
+                        <%= pluralize(@movieshow.errors.count, "error") %> prohibited
+                        this movieshow from being saved:
+                      </h2>
+                      <ul>
+                        <% @movieshow.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+        <p class="card-text">Select the date of show then select the show time then movie name and last screen.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= f.label :date %>
+            <%= f.date_field :show_date,  class: "form-control"%><br>
+          </li>
+          <li class="list-group-item"><%= f.label :showtime %>
+            <%= f.time_select :show_time%><br>
+          </li>
+          <li class="list-group-item">Movies: <%=f.select :movie_id, options_from_collection_for_select(current_user.movies, :id, :name) %><br>
+          </li>
+          <li class="list-group-item">Screens: <%= f.grouped_collection_select :screen_id, current_user.theatres.order(:name), :screens, :name, :id, :name %><br>
+          </li>
+        </ul>
+         <%= f.submit class: "btn btn-success" %>
+      <%end%>
+    </div>
+  </div>
+</div>
 
-	<%= f.grouped_collection_select :screen_id, Theatre.order(:name), :screens, :name, :id, :name %>
-	<%= f.submit %>
-	<%end%>
-	
-	
+
+<%= link_to "Back", user_movieshows_path(current_user), class: "btn btn-warning" %>
+  
+  

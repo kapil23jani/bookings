@@ -1,5 +1,1 @@
-<%= form_for ([current_user,@theatre, @screen]) do |form| %>
-<%= form.label :name %>
-<%= form.text_field :name %>
-<%= form.submit %>
-<%end%>
+<%= render partial: "form", object: @screen %>

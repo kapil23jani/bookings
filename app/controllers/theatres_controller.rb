@@ -1,18 +1,15 @@
 class TheatresController < ApplicationController
-	def index
-		@theatres = Theatre.all
-	end
-
+	
 	def new
 		@theatre = Theatre.new
 	end
 
 	def create
-		binding.pry
-		@user = current_user
-		@theatre = @user.theatres.create(theatre_params)
+		@theatre = current_user.theatres.create(theatre_params)
 		if @theatre.save
-			redirect_to user_allshow_path(current_user,@theatre)
+			redirect_to user_allshow_path(current_user)
+		else
+			render "new"
 		end
 	end
 
@@ -25,31 +22,30 @@ class TheatresController < ApplicationController
 	end
 
 	def edit
-		@theatre = Theatre.find(params[:id])
+		@theatre = current_user.theatres.find(params[:id])
 	end
 
 	def update
-		@theatre = Theatre.find(params[:id])
+		@theatre = current_user.theatres.find(params[:id])
 		if @theatre.update(theatre_params)
-			redirect_to allshow_path(@theatre)
+			redirect_to user_theatre_path(current_user, @theatre)
 		else
 			render 'edit'
 		end
 	end
 
 	def destroy
-		@theatre = Theatre.find(params[:id])
+		@theatre = current_user.theatres.find(params[:id])
 		if @theatre.destroy
-			redirect_to user_allshow_path(current_user,@theatre)
+			redirect_to user_allshow_path(current_user)
+		else
+			p "Only current_user can delete"
 		end
 	end
-
-
-
 
 	private 
 
 	def theatre_params
-		params.require(:theatre).permit(:user_id,:name, :address, :contact, :facilities)
+		params.require(:theatre).permit(:user_id, :name, :address, :contact, :facilities)
 	end
 end
